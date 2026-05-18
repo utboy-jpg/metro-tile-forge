@@ -5,9 +5,31 @@ import { CyclingText } from "../CyclingText";
 import { AstrosisBg } from "../AstrosisBg";
 import { TechStackBar } from "../TechStackBar";
 import { astrosisCycle, smallProjects } from "@/lib/portfolio-data";
-import { pack, COL_M, ROW_M, COL_D, ROW_D, type TileKey } from "@/lib/grid-pack";
+import { pack, COL_M, ROW_M, COL_D, ROW_D, type Size } from "@/lib/grid-pack";
 
-const WORK_ORDER: TileKey[] = ["astrosis", "p_cjit", "p_quip", "p_cufloda"];
+const WORK_VARIANTS: Record<string, Size[]> = {
+  astrosis: [
+    { w: 2, h: 2 },
+    { w: 3, h: 2 },
+    { w: 2, h: 3 },
+  ],
+  p_cjit: [
+    { w: 1, h: 1 },
+    { w: 2, h: 1 },
+    { w: 1, h: 2 },
+  ],
+  p_quip: [
+    { w: 1, h: 1 },
+    { w: 2, h: 1 },
+    { w: 1, h: 2 },
+  ],
+  p_cufloda: [
+    { w: 2, h: 1 },
+    { w: 1, h: 1 },
+    { w: 2, h: 2 },
+  ],
+};
+const WORK_ORDER = ["astrosis", "p_cjit", "p_quip", "p_cufloda"];
 
 export function WorkSection({
   seed,
@@ -18,11 +40,11 @@ export function WorkSection({
   onOpenAstrosis: () => void;
   onOpenProjects: () => void;
 }) {
-  const desktop = useMemo(() => pack(4, WORK_ORDER, seed), [seed]);
-  const mobile = useMemo(() => pack(2, WORK_ORDER, seed + 1), [seed]);
+  const desktop = useMemo(() => pack(4, WORK_ORDER, seed, WORK_VARIANTS), [seed]);
+  const mobile = useMemo(() => pack(2, WORK_ORDER, seed + 1, WORK_VARIANTS), [seed]);
   const dMap = Object.fromEntries(desktop.map((p) => [p.key, p]));
   const mMap = Object.fromEntries(mobile.map((p) => [p.key, p]));
-  const cls = (k: TileKey) => {
+  const cls = (k: string) => {
     const d = dMap[k];
     const m = mMap[k];
     return `${COL_M[m.w]} ${ROW_M[m.h]} ${COL_D[d.w]} ${ROW_D[d.h]}`;
@@ -68,7 +90,7 @@ export function WorkSection({
           </motion.div>
 
           {smallProjects.map((p) => {
-            const key = `p_${p.key}` as TileKey;
+            const key = `p_${p.key}`;
             return (
               <motion.div
                 layout
