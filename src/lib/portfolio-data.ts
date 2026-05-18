@@ -1,10 +1,32 @@
 export const links = {
   github: "https://github.com/UtkarshJoshiNtl",
+  githubUser: "UtkarshJoshiNtl",
   linkedin: "https://linkedin.com/in/utkarsh-joshi",
   email: "joshiutkarshntl@gmail.com",
-  codeforces: "https://codeforces.com/profile/UtkarshJoshiNtl",
+  codeforces: "https://codeforces.com/profile/BakedRajma",
+  codeforcesHandle: "BakedRajma",
   resume: "/resume.pdf",
 };
+
+export const timeline = [
+  { year: "2025", text: "entered college" },
+  { year: "2026", text: "contributing to open source" },
+];
+
+export const techStack = [
+  "C",
+  "C++",
+  "CUDA",
+  "Python",
+  "OpenGL",
+  "NumPy",
+  "PyGame",
+  "POSIX",
+  "Bash",
+  "Linux",
+  "OpenMP",
+  "Git",
+];
 
 export const astrosisCycle = [
   "Astrosis — Orbital Mechanics Engine",
@@ -17,6 +39,28 @@ export const projectsCycle = ["cjit", "Quip", "CuFloda", "OwlEchoSense", "LANPar
 export const roadmapCycle = ["May → October 2026", "7-phase technical plan"];
 export const hobbyCycle = ["3D Art", "Music"];
 export const aboutCycle = ["First-year CS undergraduate", "Building from first principles"];
+
+// Small project tiles in Work section
+export const smallProjects = [
+  {
+    key: "cjit",
+    name: "cjit",
+    tags: ["C", "VCS"],
+    accent: "bg-tile",
+  },
+  {
+    key: "quip",
+    name: "Quip",
+    tags: ["C", "POSIX"],
+    accent: "bg-tile-alt",
+  },
+  {
+    key: "cufloda",
+    name: "CuFloda",
+    tags: ["Python", "LBM"],
+    accent: "bg-tile",
+  },
+] as const;
 
 export const benchmarks = [
   ["Operation", "Python", "C++", "CUDA"],
